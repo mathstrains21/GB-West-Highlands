@@ -68,7 +68,7 @@ jobs:
           retention-days: 1
         if: ${{ steps.check_files.outputs.files_exists == 'true' }}
 
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: merge_test_results
         if: ${{ github.event_name == 'pull_request' && steps.check_files.outputs.files_exists == 'true' }}
@@ -118,7 +118,7 @@ jobs:
               python-version: 3.8
 
         - name: Retrieve Timetable Checker Executable
-          uses: actions/download-artifact@v1
+          uses: actions/download-artifact@v4.1.7
           with:
             name: ttb_checker_exe_archive
           continue-on-error: true
@@ -130,7 +130,7 @@ jobs:
             files: "ttb_checker_exe_archive"
 
         - name: Retrieve Timetable Check Output Parser
-          uses: actions/download-artifact@v1
+          uses: actions/download-artifact@v4.1.7
           with:
             name: ttb_check_python_parser
           if: ${{ steps.check_archive.outputs.files_exists == 'true' }}
